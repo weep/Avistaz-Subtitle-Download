@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Avistaz subtitle download
 // @namespace    http://weep.se/
-// @version      0.1
+// @version      0.2
 // @description  Adds the posibility to download subtitles from the flags in the list
 // @downloadURL  https://raw.githubusercontent.com/weep/Avistaz-Subtitle-Download/master/Avistaz-Subtitle-Download.user.js
 // @author       Weep
@@ -11,18 +11,16 @@
 'use strict';
 
 (function() {
-	var flagclass = "";
+	var flagclass = "i.flag-icon-gb";
+	var item = $("[data-original-title=English]").closest(".badge-extra")
+	item.off();
 
-	$(".flag-icon").off(); $(".flag-icon").click(function(target) {
-		var parent = target.target.parentElement;
-
-		flagclass = "i." + target.target.className.replace(/ /ig, ".");
-		var linkNode = parent.getElementsByTagName("a")[0];
-		var link = linkNode.href;
+	item.click(function(target) {
+		var link = $(event.target).closest(".torrent-file").find(".torrent-filename")[0];
 
 		var oReq = new XMLHttpRequest();
 		oReq.addEventListener("load", reqListener);
-		oReq.open("GET", linkNode.href);
+		oReq.open("GET", link);
 		oReq.send();
 	});
 
