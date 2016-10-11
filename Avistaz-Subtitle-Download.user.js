@@ -1,12 +1,13 @@
 // ==UserScript==
 // @name         Avistaz subtitle download
 // @namespace    http://weep.se/
-// @version      0.2
+// @version      0.3
 // @description  Adds the posibility to download subtitles from the flags in the list
 // @downloadURL  https://raw.githubusercontent.com/weep/Avistaz-Subtitle-Download/master/Avistaz-Subtitle-Download.user.js
 // @author       Weep
 // @match        https://avistaz.to/*
 // @grant        none
+// @require http://code.jquery.com/jquery-latest.js
 // ==/UserScript==
 'use strict';
 
